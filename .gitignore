@@ -1,0 +1,68 @@
+# Miscellaneous
+*.class
+*.log
+*.pyc
+*.swp
+.DS_Store
+.atom/
+.build/
+.buildlog/
+.history
+.svn/
+.swiftpm/
+migrate_working_dir/
+
+# IntelliJ related
+*.iml
+*.ipr
+*.iws
+.idea/
+
+# VS Code
+.vscode/
+
+# Flutter/Dart/Pub related
+**/doc/api/
+**/ios/Flutter/.last_build_id
+.dart_tool/
+.flutter-plugins-dependencies
+.pub-cache/
+.pub/
+/build/
+/coverage/
+
+# Symbolication related
+app.*.symbols
+
+# Obfuscation related
+app.*.map.json
+
+# Android Studio will place build artifacts here
+/android/app/debug
+/android/app/profile
+/android/app/release
+
+# iOS & macOS (Nếu sau này ông build App)
+Pods/
+.symlinks/
+*.xcworkspace/xcuserdata/
+
+# ==========================================
+# CÁC PHẦN BỔ SUNG CHO PROJECT CỦA ÔNG
+# ==========================================
+
+# 1. BẢO MẬT (flutter_dotenv)
+# Bắt buộc phải bỏ qua file .env để không bị lộ API Key, Token lên Github
+.env
+.env.*
+*.env
+!.env.example # Cho phép push file example (đã xóa key thật) lên để team biết cấu trúc
+
+# 2. CODE GENERATION (build_runner, freezed, json_serializable, injectable)
+# Tùy chọn: Nếu team ông muốn Github sạch sẽ và tự chạy lệnh build_runner khi clone về,
+# thì bỏ comment (xóa dấu #) ở các dòng dưới đây.
+# Còn nếu ông làm 1 mình thì CỨ ĐỂ COMMENT như này (Push cả code gen lên cho nhàn).
+
+# *.g.dart
+# *.freezed.dart
+# *.config.dart
