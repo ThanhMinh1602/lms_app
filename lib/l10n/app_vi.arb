@@ -1,0 +1,14 @@
+{
+  "@@locale": "vi",
+  "appTitle": "Hệ thống Quản lý Học tập",
+  "homeTitle": "Trang chủ Admin",
+  "welcomeUser": "Chào mừng, {name}!",
+  "@welcomeUser": {
+    "placeholders": {
+      "name": {
+        "type": "String"
+      }
+    }
+  },
+  "loginButton": "Đăng nhập"
+}

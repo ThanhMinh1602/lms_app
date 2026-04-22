@@ -1,0 +1,7 @@
+{
+  "@@locale": "en",
+  "appTitle": "Learning Management System",
+  "homeTitle": "Admin Dashboard",
+  "welcomeUser": "Welcome, {name}!",
+  "loginButton": "Login"
+}
