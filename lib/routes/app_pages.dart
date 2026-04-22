@@ -6,12 +6,12 @@ import 'app_routes.dart';
 class AppPages {
   AppPages._();
   static final GoRouter router = GoRouter(
-    initialLocation: AppRoutes.home.path,
+    initialLocation: AppRoutes.splash.path,
     debugLogDiagnostics: true,
     routes: [
       GoRoute(
         path: AppRoutes.splash.path,
-        name: AppRoutes.splash.name, // Lấy name từ enum
+        name: AppRoutes.splash.name,
         builder: (context, state) => const SplashPage(),
       ),
     ],
