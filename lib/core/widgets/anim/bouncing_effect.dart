@@ -1,11 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
+import 'package:vibration/vibration.dart'; // Import thư viện chọc thẳng phần cứng
 
 class BouncingEffect extends StatefulWidget {
   final Widget child;
   final VoidCallback? onPressed;
   final double scaleFactor;
-
   final bool enableHaptic;
 
   const BouncingEffect({
@@ -23,17 +22,23 @@ class BouncingEffect extends StatefulWidget {
 class _BouncingEffectState extends State<BouncingEffect> {
   bool _isPressed = false;
 
-
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
       behavior: HitTestBehavior.opaque,
       onTapDown: (_) => setState(() => _isPressed = true),
-      onTapUp: (_) {
+      // THÊM async VÀO ĐÂY ĐỂ ĐỢI PHẢN HỒI TỪ PHẦN CỨNG
+      onTapUp: (_) async {
         setState(() => _isPressed = false);
+
         if (widget.onPressed != null) {
           if (widget.enableHaptic) {
-            SystemChannels.platform.invokeMethod('HapticFeedback.vibrate');
+            // Kiểm tra xem máy có phần cứng motor rung không
+            bool? hasVibrator = await Vibration.hasVibrator();
+            if (hasVibrator == true) {
+              // Ra lệnh cho motor quay trong đúng 50 mili-giây (rất dứt khoát)
+              Vibration.vibrate(duration: 50);
+            }
           }
           widget.onPressed!();
         }
