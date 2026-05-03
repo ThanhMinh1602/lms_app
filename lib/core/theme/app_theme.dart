@@ -47,8 +47,8 @@ class AppTheme {
         style: ElevatedButton.styleFrom(
           backgroundColor: AppColor.primary,
           foregroundColor: Colors.white, // Màu chữ/icon trên nút
-          minimumSize: const Size.fromHeight(AppDimens.buttonHeight),
-          padding: const EdgeInsets.symmetric(horizontal: AppDimens.grid3),
+          minimumSize:  Size.fromHeight(AppDimens.buttonHeight),
+          padding:  EdgeInsets.symmetric(horizontal: AppDimens.grid3),
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(AppDimens.shapeFull),
           ),
@@ -76,7 +76,7 @@ class AppTheme {
         centerTitle: true,
         toolbarHeight: AppDimens.topAppBarHeight,
         titleTextStyle: AppTextStyles.title3.copyWith(color: AppColor.textPrimary),
-        iconTheme: const IconThemeData(
+        iconTheme:  IconThemeData(
           color: AppColor.textPrimary,
           size: AppDimens.iconMedium,
         ),
@@ -86,7 +86,7 @@ class AppTheme {
       inputDecorationTheme: InputDecorationTheme(
         filled: true,
         fillColor: AppColor.surface,
-        contentPadding: const EdgeInsets.symmetric(
+        contentPadding:  EdgeInsets.symmetric(
           horizontal: AppDimens.grid2,
           vertical: AppDimens.grid1_5,
         ),
@@ -107,7 +107,6 @@ class AppTheme {
     );
   }
 
-  /// Cấu hình sẵn khung cho Dark Theme (Để sau này làm tính năng đổi nền)
   static ThemeData get darkTheme {
     // Tương tự lightTheme, nhưng bạn sẽ thay các mã màu trong ColorScheme
     // bằng các màu tối (VD: surface là màu xám đen, textPrimary là màu trắng...)

@@ -1,14 +1,30 @@
 {
   "@@locale": "vi",
   "appTitle": "Hệ thống Quản lý Học tập",
-  "homeTitle": "Trang chủ Admin",
-  "welcomeUser": "Chào mừng, {name}!",
-  "@welcomeUser": {
-    "placeholders": {
-      "name": {
-        "type": "String"
-      }
-    }
-  },
-  "loginButton": "Đăng nhập"
+  "appName": "LMS EdTech",
+  "splashSlogan": "Học tập không giới hạn\nMọi lúc, mọi nơi",
+
+  "loginTitle": "Chào mừng trở lại! 👋",
+  "loginSubtitle": "Hãy đăng nhập để tiếp tục hành trình khám phá tri thức của bạn.",
+  "registerTitle": "Tạo tài khoản mới 🚀",
+  "registerSubtitle": "Tham gia cộng đồng học tập và phát triển bản thân ngay hôm nay.",
+  "forgotPasswordTitle": "Quên mật khẩu? 🔐",
+  "forgotPasswordSubtitle": "Nhập email của bạn, chúng tôi sẽ gửi mã khôi phục trong giây lát.",
+
+  "loginButton": "Đăng nhập",
+  "registerButton": "Đăng ký",
+  "sendResetCodeButton": "Gửi mã khôi phục",
+
+  "emailHint": "Email của bạn",
+  "passwordHint": "Mật khẩu",
+  "fullNameHint": "Họ và tên",
+  "confirmPasswordHint": "Xác nhận mật khẩu",
+  "enterEmailHint": "Nhập email liên kết",
+
+  "forgotPassword": "Quên mật khẩu?",
+  "dontHaveAccount": "Chưa có tài khoản? ",
+  "alreadyHaveAccount": "Đã có tài khoản? ",
+  "registerNow": "Đăng ký ngay",
+  "loginNow": "Đăng nhập ngay",
+  "backToLogin": "Quay lại Đăng nhập"
 }
