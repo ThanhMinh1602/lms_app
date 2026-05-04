@@ -1,30 +1,35 @@
 {
   "@@locale": "vi",
+
   "appTitle": "Hệ thống Quản lý Học tập",
   "appName": "LMS EdTech",
   "splashSlogan": "Học tập không giới hạn\nMọi lúc, mọi nơi",
 
-  "loginTitle": "Chào mừng trở lại! 👋",
-  "loginSubtitle": "Hãy đăng nhập để tiếp tục hành trình khám phá tri thức của bạn.",
-  "registerTitle": "Tạo tài khoản mới 🚀",
-  "registerSubtitle": "Tham gia cộng đồng học tập và phát triển bản thân ngay hôm nay.",
-  "forgotPasswordTitle": "Quên mật khẩu? 🔐",
-  "forgotPasswordSubtitle": "Nhập email của bạn, chúng tôi sẽ gửi mã khôi phục trong giây lát.",
+  "signInTitle": "Đăng nhập",
+  "signUpTitle": "Đăng ký",
+  "forgotPasswordPlainTitle": "Quên mật khẩu?",
+  "forgotPasswordPlainSubtitle": "Nhập email của bạn để nhận hướng dẫn khôi phục mật khẩu.",
+  "resetPasswordSubtitle": "Tạo mật khẩu mới để tiếp tục sử dụng tài khoản của bạn.",
 
-  "loginButton": "Đăng nhập",
-  "registerButton": "Đăng ký",
-  "sendResetCodeButton": "Gửi mã khôi phục",
+  "nameLabel": "Họ và tên",
+  "namePlaceholder": "Tên của bạn",
+  "emailLabel": "Email",
+  "emailPlaceholder": "study@email.com",
+  "passwordLabel": "Mật khẩu",
+  "passwordPlaceholder": "Mật khẩu của bạn",
+  "newPasswordLabel": "Mật khẩu mới",
+  "confirmPasswordLabel": "Xác nhận mật khẩu",
+  "phoneNumberLabel": "Số điện thoại",
+  "phoneNumberPlaceholder": "0334 xxxx xxxx",
 
-  "emailHint": "Email của bạn",
-  "passwordHint": "Mật khẩu",
-  "fullNameHint": "Họ và tên",
-  "confirmPasswordHint": "Xác nhận mật khẩu",
-  "enterEmailHint": "Nhập email liên kết",
+  "resetPasswordButton": "Đặt lại mật khẩu",
+  "createPasswordButton": "Tạo mật khẩu",
 
-  "forgotPassword": "Quên mật khẩu?",
-  "dontHaveAccount": "Chưa có tài khoản? ",
-  "alreadyHaveAccount": "Đã có tài khoản? ",
-  "registerNow": "Đăng ký ngay",
-  "loginNow": "Đăng nhập ngay",
-  "backToLogin": "Quay lại Đăng nhập"
+  "termsAgreePrefix": "Tôi đồng ý với ",
+  "termsAndConditions": "điều khoản và điều kiện",
+  "termsAgreeSuffix": " và chính sách bảo vệ dữ liệu cá nhân của ứng dụng",
+
+  "googleLoginLabel": "Đăng nhập với Google",
+  "facebookLoginLabel": "Đăng nhập với Facebook",
+  "appleLoginLabel": "Đăng nhập với Apple"
 }

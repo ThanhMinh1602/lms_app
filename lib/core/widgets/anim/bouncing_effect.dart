@@ -1,11 +1,15 @@
 import 'package:flutter/material.dart';
-import 'package:vibration/vibration.dart'; // Import thư viện chọc thẳng phần cứng
+import 'package:flutter/services.dart';
+import 'package:lms_app/core/constants/app_curves.dart';
+import 'package:lms_app/core/constants/app_durations.dart';
 
 class BouncingEffect extends StatefulWidget {
   final Widget child;
   final VoidCallback? onPressed;
   final double scaleFactor;
   final bool enableHaptic;
+  final Duration duration;
+  final Curve curve;
 
   const BouncingEffect({
     super.key,
@@ -13,6 +17,8 @@ class BouncingEffect extends StatefulWidget {
     this.onPressed,
     this.scaleFactor = 0.95,
     this.enableHaptic = false,
+    this.duration = AppDurations.fast,
+    this.curve = AppCurves.defaultCurve,
   });
 
   @override
@@ -22,32 +28,28 @@ class BouncingEffect extends StatefulWidget {
 class _BouncingEffectState extends State<BouncingEffect> {
   bool _isPressed = false;
 
+  void _setPressed(bool value) {
+    if (!mounted || _isPressed == value) return;
+    setState(() => _isPressed = value);
+  }
+
+  void _handleTapUp(TapUpDetails details) {
+    _setPressed(false);
+    if (widget.enableHaptic) HapticFeedback.lightImpact();
+    widget.onPressed?.call();
+  }
+
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
       behavior: HitTestBehavior.opaque,
-      onTapDown: (_) => setState(() => _isPressed = true),
-      // THÊM async VÀO ĐÂY ĐỂ ĐỢI PHẢN HỒI TỪ PHẦN CỨNG
-      onTapUp: (_) async {
-        setState(() => _isPressed = false);
-
-        if (widget.onPressed != null) {
-          if (widget.enableHaptic) {
-            // Kiểm tra xem máy có phần cứng motor rung không
-            bool? hasVibrator = await Vibration.hasVibrator();
-            if (hasVibrator == true) {
-              // Ra lệnh cho motor quay trong đúng 50 mili-giây (rất dứt khoát)
-              Vibration.vibrate(duration: 50);
-            }
-          }
-          widget.onPressed!();
-        }
-      },
-      onTapCancel: () => setState(() => _isPressed = false),
+      onTapDown: widget.onPressed == null ? null : (_) => _setPressed(true),
+      onTapUp: widget.onPressed == null ? null : _handleTapUp,
+      onTapCancel: widget.onPressed == null ? null : () => _setPressed(false),
       child: AnimatedScale(
-        scale: _isPressed ? widget.scaleFactor : 1.0,
-        duration: const Duration(milliseconds: 100),
-        curve: Curves.easeInOut,
+        scale: _isPressed ? widget.scaleFactor : 1,
+        duration: widget.duration,
+        curve: widget.curve,
         child: widget.child,
       ),
     );

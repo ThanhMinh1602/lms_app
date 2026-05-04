@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
+import 'package:lms_app/core/constants/app_curves.dart';
+import 'package:lms_app/core/constants/app_dimens.dart';
+import 'package:lms_app/core/constants/app_durations.dart';
+import 'package:lms_app/core/extensions/context_extension.dart';
 import 'package:lms_app/core/widgets/anim/bouncing_effect.dart';
 import 'package:lms_app/core/widgets/image/custom_image.dart';
 
@@ -10,10 +13,11 @@ class CustomIconButton extends StatelessWidget {
   final VoidCallback? onPressed;
   final IconButtonVariant variant;
   final bool isLoading;
-  final double buttonSize;
-  final double iconSize;
+  final double? buttonSize;
+  final double? iconSize;
   final bool enableAnimation;
   final bool enableHaptic;
+  final String? semanticsLabel;
 
   const CustomIconButton({
     super.key,
@@ -21,95 +25,100 @@ class CustomIconButton extends StatelessWidget {
     this.onPressed,
     this.variant = IconButtonVariant.ghost,
     this.isLoading = false,
-    this.buttonSize = 48.0,
-    this.iconSize = 24.0,
+    this.buttonSize,
+    this.iconSize,
     this.enableAnimation = true,
     this.enableHaptic = false,
+    this.semanticsLabel,
   });
 
   bool get isDisabled => isLoading || onPressed == null;
 
-  Color _getIconColor() {
-    if (isDisabled) return Colors.grey.shade400;
-    if (variant == IconButtonVariant.primary) return Colors.white;
-    return const Color(0xFF0F172A);
+  Color _iconColor(BuildContext context) {
+    if (isLoading && variant == IconButtonVariant.primary)
+      return context.colors.onPrimary;
+    if (isDisabled) return context.colors.onSurface.withOpacity(0.38);
+    if (variant == IconButtonVariant.primary) return context.colors.onPrimary;
+    return context.colors.onSurface;
   }
 
-  Color _getBackgroundColor() {
-    if (variant == IconButtonVariant.primary) {
-      return isDisabled && !isLoading
-          ? Colors.grey.shade200
-          : const Color(0xFF0EA5E9);
-    }
-    return Colors.transparent;
+  Color _backgroundColor(BuildContext context) {
+    if (variant != IconButtonVariant.primary) return Colors.transparent;
+    if (isDisabled && !isLoading)
+      return context.colors.onSurface.withOpacity(0.12);
+    return context.colors.primary;
   }
 
-  Border? _getBorder() {
-    if (variant == IconButtonVariant.outlined) {
-      return Border.all(
-        color: isDisabled && !isLoading
-            ? Colors.grey.shade300
-            : Colors.grey.shade300,
-        width: 1.5,
-      );
-    }
-    return null;
+  Border? _border(BuildContext context) {
+    if (variant != IconButtonVariant.outlined) return null;
+    return Border.all(color: context.colors.outline, width: 1.5);
   }
 
   @override
   Widget build(BuildContext context) {
-    final iconColor = _getIconColor();
+    final resolvedIconSize = iconSize ?? AppDimens.iconMedium;
+    final resolvedButtonSize = buttonSize ?? AppDimens.minTouchTarget;
+    final iconColor = _iconColor(context);
 
-    final Widget childContent = isLoading
-        ? SizedBox(
-      height: iconSize * 0.8,
-      width: iconSize * 0.8,
-      child: CircularProgressIndicator(
-        strokeWidth: 2.5,
-        color: iconColor,
-      ),
-    )
-        : CustomImage(
-      imagePath: iconPath,
-      width: iconSize,
-      height: iconSize,
-      color: iconColor,
+    final childContent = AnimatedSwitcher(
+      duration: AppDurations.normal,
+      switchInCurve: AppCurves.defaultCurve,
+      switchOutCurve: AppCurves.defaultCurve,
+      child: isLoading
+          ? SizedBox(
+              key: const ValueKey('loading'),
+              height: resolvedIconSize * 0.8,
+              width: resolvedIconSize * 0.8,
+              child: CircularProgressIndicator(
+                strokeWidth: 2.5,
+                color: iconColor,
+              ),
+            )
+          : CustomImage(
+              key: const ValueKey('icon'),
+              imagePath: iconPath,
+              width: resolvedIconSize,
+              height: resolvedIconSize,
+              color: iconColor,
+            ),
     );
 
-    final Widget buttonUI = AnimatedContainer(
-      duration: enableAnimation
-          ? const Duration(milliseconds: 200)
-          : Duration.zero,
-      curve: Curves.easeInOut,
-      width: buttonSize,
-      height: buttonSize,
+    final buttonUI = AnimatedContainer(
+      duration: enableAnimation ? AppDurations.normal : Duration.zero,
+      curve: AppCurves.defaultCurve,
+      width: resolvedButtonSize,
+      height: resolvedButtonSize,
       alignment: Alignment.center,
       decoration: BoxDecoration(
-        color: _getBackgroundColor(),
-        border: _getBorder(),
+        color: _backgroundColor(context),
+        border: _border(context),
         shape: BoxShape.circle,
       ),
       child: childContent,
     );
 
-    if (isDisabled) return buttonUI;
+    final semanticButton = Semantics(
+      button: true,
+      enabled: !isDisabled,
+      label: semanticsLabel,
+      child: buttonUI,
+    );
+
+    if (isDisabled) return semanticButton;
 
     if (!enableAnimation) {
       return GestureDetector(
         behavior: HitTestBehavior.opaque,
-        onTap: () {
-          if (enableHaptic) HapticFeedback.lightImpact();
-          onPressed!();
-        },
-        child: buttonUI,
+        onTap: onPressed,
+        child: semanticButton,
       );
     }
 
     return BouncingEffect(
       onPressed: onPressed,
-      enableHaptic: enableHaptic, // Giao quyền rung cho BouncingEffect
-      scaleFactor: 0.90,
-      child: buttonUI,
+      enableHaptic: enableHaptic,
+      scaleFactor: 0.9,
+      child: semanticButton,
     );
   }
 }

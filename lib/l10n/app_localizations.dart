@@ -116,125 +116,143 @@ abstract class AppLocalizations {
   /// **'Học tập không giới hạn\nMọi lúc, mọi nơi'**
   String get splashSlogan;
 
-  /// No description provided for @loginTitle.
-  ///
-  /// In vi, this message translates to:
-  /// **'Chào mừng trở lại! 👋'**
-  String get loginTitle;
-
-  /// No description provided for @loginSubtitle.
-  ///
-  /// In vi, this message translates to:
-  /// **'Hãy đăng nhập để tiếp tục hành trình khám phá tri thức của bạn.'**
-  String get loginSubtitle;
-
-  /// No description provided for @registerTitle.
-  ///
-  /// In vi, this message translates to:
-  /// **'Tạo tài khoản mới 🚀'**
-  String get registerTitle;
-
-  /// No description provided for @registerSubtitle.
-  ///
-  /// In vi, this message translates to:
-  /// **'Tham gia cộng đồng học tập và phát triển bản thân ngay hôm nay.'**
-  String get registerSubtitle;
-
-  /// No description provided for @forgotPasswordTitle.
-  ///
-  /// In vi, this message translates to:
-  /// **'Quên mật khẩu? 🔐'**
-  String get forgotPasswordTitle;
-
-  /// No description provided for @forgotPasswordSubtitle.
-  ///
-  /// In vi, this message translates to:
-  /// **'Nhập email của bạn, chúng tôi sẽ gửi mã khôi phục trong giây lát.'**
-  String get forgotPasswordSubtitle;
-
-  /// No description provided for @loginButton.
+  /// No description provided for @signInTitle.
   ///
   /// In vi, this message translates to:
   /// **'Đăng nhập'**
-  String get loginButton;
+  String get signInTitle;
 
-  /// No description provided for @registerButton.
+  /// No description provided for @signUpTitle.
   ///
   /// In vi, this message translates to:
   /// **'Đăng ký'**
-  String get registerButton;
+  String get signUpTitle;
 
-  /// No description provided for @sendResetCodeButton.
-  ///
-  /// In vi, this message translates to:
-  /// **'Gửi mã khôi phục'**
-  String get sendResetCodeButton;
-
-  /// No description provided for @emailHint.
-  ///
-  /// In vi, this message translates to:
-  /// **'Email của bạn'**
-  String get emailHint;
-
-  /// No description provided for @passwordHint.
-  ///
-  /// In vi, this message translates to:
-  /// **'Mật khẩu'**
-  String get passwordHint;
-
-  /// No description provided for @fullNameHint.
-  ///
-  /// In vi, this message translates to:
-  /// **'Họ và tên'**
-  String get fullNameHint;
-
-  /// No description provided for @confirmPasswordHint.
-  ///
-  /// In vi, this message translates to:
-  /// **'Xác nhận mật khẩu'**
-  String get confirmPasswordHint;
-
-  /// No description provided for @enterEmailHint.
-  ///
-  /// In vi, this message translates to:
-  /// **'Nhập email liên kết'**
-  String get enterEmailHint;
-
-  /// No description provided for @forgotPassword.
+  /// No description provided for @forgotPasswordPlainTitle.
   ///
   /// In vi, this message translates to:
   /// **'Quên mật khẩu?'**
-  String get forgotPassword;
+  String get forgotPasswordPlainTitle;
 
-  /// No description provided for @dontHaveAccount.
+  /// No description provided for @forgotPasswordPlainSubtitle.
   ///
   /// In vi, this message translates to:
-  /// **'Chưa có tài khoản? '**
-  String get dontHaveAccount;
+  /// **'Nhập email của bạn để nhận hướng dẫn khôi phục mật khẩu.'**
+  String get forgotPasswordPlainSubtitle;
 
-  /// No description provided for @alreadyHaveAccount.
+  /// No description provided for @resetPasswordSubtitle.
   ///
   /// In vi, this message translates to:
-  /// **'Đã có tài khoản? '**
-  String get alreadyHaveAccount;
+  /// **'Tạo mật khẩu mới để tiếp tục sử dụng tài khoản của bạn.'**
+  String get resetPasswordSubtitle;
 
-  /// No description provided for @registerNow.
+  /// No description provided for @nameLabel.
   ///
   /// In vi, this message translates to:
-  /// **'Đăng ký ngay'**
-  String get registerNow;
+  /// **'Họ và tên'**
+  String get nameLabel;
 
-  /// No description provided for @loginNow.
+  /// No description provided for @namePlaceholder.
   ///
   /// In vi, this message translates to:
-  /// **'Đăng nhập ngay'**
-  String get loginNow;
+  /// **'Tên của bạn'**
+  String get namePlaceholder;
 
-  /// No description provided for @backToLogin.
+  /// No description provided for @emailLabel.
   ///
   /// In vi, this message translates to:
-  /// **'Quay lại Đăng nhập'**
-  String get backToLogin;
+  /// **'Email'**
+  String get emailLabel;
+
+  /// No description provided for @emailPlaceholder.
+  ///
+  /// In vi, this message translates to:
+  /// **'study@email.com'**
+  String get emailPlaceholder;
+
+  /// No description provided for @passwordLabel.
+  ///
+  /// In vi, this message translates to:
+  /// **'Mật khẩu'**
+  String get passwordLabel;
+
+  /// No description provided for @passwordPlaceholder.
+  ///
+  /// In vi, this message translates to:
+  /// **'Mật khẩu của bạn'**
+  String get passwordPlaceholder;
+
+  /// No description provided for @newPasswordLabel.
+  ///
+  /// In vi, this message translates to:
+  /// **'Mật khẩu mới'**
+  String get newPasswordLabel;
+
+  /// No description provided for @confirmPasswordLabel.
+  ///
+  /// In vi, this message translates to:
+  /// **'Xác nhận mật khẩu'**
+  String get confirmPasswordLabel;
+
+  /// No description provided for @phoneNumberLabel.
+  ///
+  /// In vi, this message translates to:
+  /// **'Số điện thoại'**
+  String get phoneNumberLabel;
+
+  /// No description provided for @phoneNumberPlaceholder.
+  ///
+  /// In vi, this message translates to:
+  /// **'0334 xxxx xxxx'**
+  String get phoneNumberPlaceholder;
+
+  /// No description provided for @resetPasswordButton.
+  ///
+  /// In vi, this message translates to:
+  /// **'Đặt lại mật khẩu'**
+  String get resetPasswordButton;
+
+  /// No description provided for @createPasswordButton.
+  ///
+  /// In vi, this message translates to:
+  /// **'Tạo mật khẩu'**
+  String get createPasswordButton;
+
+  /// No description provided for @termsAgreePrefix.
+  ///
+  /// In vi, this message translates to:
+  /// **'Tôi đồng ý với '**
+  String get termsAgreePrefix;
+
+  /// No description provided for @termsAndConditions.
+  ///
+  /// In vi, this message translates to:
+  /// **'điều khoản và điều kiện'**
+  String get termsAndConditions;
+
+  /// No description provided for @termsAgreeSuffix.
+  ///
+  /// In vi, this message translates to:
+  /// **' và chính sách bảo vệ dữ liệu cá nhân của ứng dụng'**
+  String get termsAgreeSuffix;
+
+  /// No description provided for @googleLoginLabel.
+  ///
+  /// In vi, this message translates to:
+  /// **'Đăng nhập với Google'**
+  String get googleLoginLabel;
+
+  /// No description provided for @facebookLoginLabel.
+  ///
+  /// In vi, this message translates to:
+  /// **'Đăng nhập với Facebook'**
+  String get facebookLoginLabel;
+
+  /// No description provided for @appleLoginLabel.
+  ///
+  /// In vi, this message translates to:
+  /// **'Đăng nhập với Apple'**
+  String get appleLoginLabel;
 }
 
 class _AppLocalizationsDelegate

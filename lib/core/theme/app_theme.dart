@@ -2,53 +2,124 @@ import 'package:flutter/material.dart';
 import 'package:lms_app/core/constants/app_colors.dart';
 import 'package:lms_app/core/constants/app_dimens.dart';
 import 'package:lms_app/core/constants/app_text_styles.dart';
-// Nhớ import các class AppColor, AppDimens, AppTextStyles của bạn vào đây
 
 class AppTheme {
   AppTheme._();
 
-  /// Giao diện Sáng (Light Theme) mặc định của App
   static ThemeData get lightTheme {
+    final colorScheme = const ColorScheme.light(
+      primary: AppColor.primary,
+      onPrimary: Colors.white,
+      secondary: AppColor.secondary,
+      onSecondary: Colors.white,
+      surface: AppColor.surface,
+      onSurface: AppColor.textPrimary,
+      error: AppColor.error,
+      onError: Colors.white,
+      outline: AppColor.border,
+      surfaceContainerHighest: AppColor.surfaceSoft,
+    );
+
+    return _buildTheme(
+      brightness: Brightness.light,
+      colorScheme: colorScheme,
+      scaffoldBackgroundColor: AppColor.background,
+      cardColor: AppColor.surface,
+      inputFillColor: AppColor.surface,
+      textPrimaryColor: AppColor.textPrimary,
+      textSecondaryColor: AppColor.textSecondary,
+      borderColor: AppColor.border,
+    );
+  }
+
+  static ThemeData get darkTheme {
+    final colorScheme = const ColorScheme.dark(
+      primary: AppColor.primary,
+      onPrimary: Colors.white,
+      secondary: AppColor.secondary,
+      onSecondary: Colors.white,
+      surface: AppColor.darkSurface,
+      onSurface: AppColor.darkTextPrimary,
+      error: AppColor.error,
+      onError: Colors.white,
+      outline: AppColor.darkBorder,
+      surfaceContainerHighest: AppColor.darkSurfaceSoft,
+    );
+
+    return _buildTheme(
+      brightness: Brightness.dark,
+      colorScheme: colorScheme,
+      scaffoldBackgroundColor: AppColor.darkBackground,
+      cardColor: AppColor.darkSurface,
+      inputFillColor: AppColor.darkSurfaceSoft,
+      textPrimaryColor: AppColor.darkTextPrimary,
+      textSecondaryColor: AppColor.darkTextSecondary,
+      borderColor: AppColor.darkBorder,
+    );
+  }
+
+  static ThemeData _buildTheme({
+    required Brightness brightness,
+    required ColorScheme colorScheme,
+    required Color scaffoldBackgroundColor,
+    required Color cardColor,
+    required Color inputFillColor,
+    required Color textPrimaryColor,
+    required Color textSecondaryColor,
+    required Color borderColor,
+  }) {
     return ThemeData(
       useMaterial3: true,
-      scaffoldBackgroundColor: AppColor.background,
-      colorScheme: const ColorScheme.light(
-        primary: AppColor.primary,
-        secondary: AppColor.secondary,
-        surface: AppColor.surface,
-        error: AppColor.error,
-        // Màu chữ hiển thị trên nền primary (VD: Chữ trên nút bấm)
-        onPrimary: Colors.white,
-        // Màu chữ hiển thị trên nền secondary
-        onSecondary: Colors.white,
-        // Màu chữ hiển thị trên nền surface (VD: Chữ trên Card)
-        onSurface: AppColor.textPrimary,
-      ),
-
-      // 3. Cấu hình Typography (Font chữ)
-      // Ánh xạ AppTextStyles vào hệ thống TextTheme của Material
+      brightness: brightness,
+      scaffoldBackgroundColor: scaffoldBackgroundColor,
+      colorScheme: colorScheme,
+      dividerColor: borderColor,
       textTheme: TextTheme(
-        displayLarge: AppTextStyles.largeTitle.copyWith(color: AppColor.textPrimary),
-        headlineLarge: AppTextStyles.title1.copyWith(color: AppColor.textPrimary),
-        headlineMedium: AppTextStyles.title2.copyWith(color: AppColor.textPrimary),
-        titleLarge: AppTextStyles.title3.copyWith(color: AppColor.textPrimary),
-
-        bodyLarge: AppTextStyles.textLargeRegular.copyWith(color: AppColor.textPrimary),
-        bodyMedium: AppTextStyles.textSmallRegular.copyWith(color: AppColor.textPrimary),
-        bodySmall: AppTextStyles.textVerySmallRegular.copyWith(color: AppColor.textSecondary),
-
-        labelLarge: AppTextStyles.textLargeSemi.copyWith(color: AppColor.textPrimary),
+        displayLarge: AppTextStyles.largeTitle.copyWith(
+          color: textPrimaryColor,
+        ),
+        headlineLarge: AppTextStyles.title1.copyWith(color: textPrimaryColor),
+        headlineMedium: AppTextStyles.title2.copyWith(color: textPrimaryColor),
+        titleLarge: AppTextStyles.title3.copyWith(color: textPrimaryColor),
+        bodyLarge: AppTextStyles.textLargeRegular.copyWith(
+          color: textPrimaryColor,
+        ),
+        bodyMedium: AppTextStyles.textSmallRegular.copyWith(
+          color: textPrimaryColor,
+        ),
+        bodySmall: AppTextStyles.textVerySmallRegular.copyWith(
+          color: textSecondaryColor,
+        ),
+        labelLarge: AppTextStyles.textLargeSemi.copyWith(
+          color: textPrimaryColor,
+        ),
+        labelMedium: AppTextStyles.textSmallSemi.copyWith(
+          color: textPrimaryColor,
+        ),
+        labelSmall: AppTextStyles.textVerySmallSemi.copyWith(
+          color: textSecondaryColor,
+        ),
       ),
-
-      // 4. Cấu hình Theme cho từng Component cụ thể
-
-      // -- Nút bấm (ElevatedButton) --
+      appBarTheme: AppBarTheme(
+        backgroundColor: scaffoldBackgroundColor,
+        foregroundColor: textPrimaryColor,
+        elevation: 0,
+        centerTitle: true,
+        toolbarHeight: AppDimens.topAppBarHeight,
+        titleTextStyle: AppTextStyles.title3.copyWith(color: textPrimaryColor),
+        iconTheme: IconThemeData(
+          color: textPrimaryColor,
+          size: AppDimens.iconMedium,
+        ),
+      ),
       elevatedButtonTheme: ElevatedButtonThemeData(
         style: ElevatedButton.styleFrom(
-          backgroundColor: AppColor.primary,
-          foregroundColor: Colors.white, // Màu chữ/icon trên nút
-          minimumSize:  Size.fromHeight(AppDimens.buttonHeight),
-          padding:  EdgeInsets.symmetric(horizontal: AppDimens.grid3),
+          backgroundColor: colorScheme.primary,
+          foregroundColor: colorScheme.onPrimary,
+          disabledBackgroundColor: colorScheme.onSurface.withOpacity(0.12),
+          disabledForegroundColor: colorScheme.onSurface.withOpacity(0.38),
+          minimumSize: Size.fromHeight(AppDimens.buttonHeight),
+          padding: EdgeInsets.symmetric(horizontal: AppDimens.grid3),
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(AppDimens.shapeFull),
           ),
@@ -56,64 +127,94 @@ class AppTheme {
           elevation: 0,
         ),
       ),
-
-      // -- Thẻ (Card - Dùng cho Flashcard/Bài học) --
+      outlinedButtonTheme: OutlinedButtonThemeData(
+        style: OutlinedButton.styleFrom(
+          foregroundColor: colorScheme.primary,
+          side: BorderSide(color: colorScheme.primary, width: 1.5),
+          minimumSize: Size.fromHeight(AppDimens.buttonHeight),
+          padding: EdgeInsets.symmetric(horizontal: AppDimens.grid3),
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(AppDimens.shapeFull),
+          ),
+          textStyle: AppTextStyles.textLargeMedium,
+        ),
+      ),
+      textButtonTheme: TextButtonThemeData(
+        style: TextButton.styleFrom(
+          foregroundColor: colorScheme.primary,
+          textStyle: AppTextStyles.textLargeMedium,
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(AppDimens.shapeFull),
+          ),
+        ),
+      ),
       cardTheme: CardThemeData(
-        color: AppColor.surface,
+        color: cardColor,
         elevation: AppDimens.cardElevation,
         margin: EdgeInsets.zero,
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(AppDimens.shapeMedium),
-          side: const BorderSide(color: AppColor.border, width: 1), // Viền mờ
+          side: BorderSide(
+            color: borderColor,
+            width: AppDimens.dividerThickness,
+          ),
         ),
       ),
-
-      // -- Thanh điều hướng trên (AppBar) --
-      appBarTheme: AppBarTheme(
-        backgroundColor: AppColor.background,
-        foregroundColor: AppColor.textPrimary, // Màu nút back và title
+      bottomNavigationBarTheme: BottomNavigationBarThemeData(
+        backgroundColor: cardColor,
+        selectedItemColor: colorScheme.primary,
+        unselectedItemColor: textSecondaryColor,
+        type: BottomNavigationBarType.fixed,
         elevation: 0,
-        centerTitle: true,
-        toolbarHeight: AppDimens.topAppBarHeight,
-        titleTextStyle: AppTextStyles.title3.copyWith(color: AppColor.textPrimary),
-        iconTheme:  IconThemeData(
-          color: AppColor.textPrimary,
-          size: AppDimens.iconMedium,
-        ),
       ),
-
-      // -- Khung nhập liệu (TextField) --
+      navigationBarTheme: NavigationBarThemeData(
+        backgroundColor: cardColor,
+        indicatorColor: colorScheme.primary.withOpacity(0.12),
+        labelTextStyle: MaterialStateProperty.resolveWith((states) {
+          final color = states.contains(MaterialState.selected)
+              ? colorScheme.primary
+              : textSecondaryColor;
+          return AppTextStyles.textVerySmallMedium.copyWith(color: color);
+        }),
+      ),
       inputDecorationTheme: InputDecorationTheme(
         filled: true,
-        fillColor: AppColor.surface,
-        contentPadding:  EdgeInsets.symmetric(
+        fillColor: inputFillColor,
+        contentPadding: EdgeInsets.symmetric(
           horizontal: AppDimens.grid2,
           vertical: AppDimens.grid1_5,
         ),
+        hintStyle: AppTextStyles.textSmallRegular.copyWith(
+          color: textSecondaryColor,
+        ),
+        errorStyle: AppTextStyles.textVerySmallRegular.copyWith(
+          color: colorScheme.error,
+        ),
         border: OutlineInputBorder(
           borderRadius: BorderRadius.circular(AppDimens.shapeSmall),
-          borderSide: const BorderSide(color: AppColor.border),
+          borderSide: BorderSide(color: borderColor),
         ),
         enabledBorder: OutlineInputBorder(
           borderRadius: BorderRadius.circular(AppDimens.shapeSmall),
-          borderSide: const BorderSide(color: AppColor.border),
+          borderSide: BorderSide(color: borderColor),
         ),
         focusedBorder: OutlineInputBorder(
           borderRadius: BorderRadius.circular(AppDimens.shapeSmall),
-          borderSide: const BorderSide(color: AppColor.primary, width: 2),
+          borderSide: BorderSide(color: colorScheme.primary, width: 1.5),
         ),
-        hintStyle: AppTextStyles.textSmallRegular.copyWith(color: AppColor.textSecondary),
+        disabledBorder: OutlineInputBorder(
+          borderRadius: BorderRadius.circular(AppDimens.shapeSmall),
+          borderSide: BorderSide(color: borderColor.withOpacity(0.6)),
+        ),
+        errorBorder: OutlineInputBorder(
+          borderRadius: BorderRadius.circular(AppDimens.shapeSmall),
+          borderSide: BorderSide(color: colorScheme.error, width: 1.5),
+        ),
+        focusedErrorBorder: OutlineInputBorder(
+          borderRadius: BorderRadius.circular(AppDimens.shapeSmall),
+          borderSide: BorderSide(color: colorScheme.error, width: 1.5),
+        ),
       ),
-    );
-  }
-
-  static ThemeData get darkTheme {
-    // Tương tự lightTheme, nhưng bạn sẽ thay các mã màu trong ColorScheme
-    // bằng các màu tối (VD: surface là màu xám đen, textPrimary là màu trắng...)
-    return ThemeData(
-      useMaterial3: true,
-      brightness: Brightness.dark,
-      // ... Cấu hình map màu Dark vào đây sau
     );
   }
 }

@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:lms_app/core/constants/app_dimens.dart';
+import 'package:lms_app/core/constants/app_text_styles.dart';
+import 'package:lms_app/core/extensions/context_extension.dart';
 import 'package:lms_app/core/widgets/anim/bouncing_effect.dart';
 import 'package:lms_app/core/widgets/image/custom_image.dart';
 
@@ -12,6 +15,8 @@ class CustomButton extends StatelessWidget {
   final ButtonVariant variant;
   final String? iconPath;
   final double? width;
+  final double? height;
+  final Gradient? gradient;
   final bool enableAnimation;
   final bool enableHaptic;
 
@@ -23,75 +28,104 @@ class CustomButton extends StatelessWidget {
     this.variant = ButtonVariant.primary,
     this.iconPath,
     this.width,
+    this.height,
+    this.gradient,
     this.enableAnimation = true,
     this.enableHaptic = false,
   });
 
   bool get isDisabled => isLoading || onPressed == null;
 
-  Color _getContentColor() {
-    if (isDisabled) return Colors.grey.shade400;
-    if (variant == ButtonVariant.primary) return Colors.white;
-    return const Color(0xFF0EA5E9);
+  Color _getContentColor(BuildContext context) {
+    if (isDisabled && !isLoading) {
+      return context.colors.onSurface.withOpacity(0.35);
+    }
+
+    if (variant == ButtonVariant.primary) {
+      return Colors.white;
+    }
+
+    return context.colors.primary;
   }
 
-  Color _getBackgroundColor() {
+  Color _getBackgroundColor(BuildContext context) {
     if (variant == ButtonVariant.primary) {
-      return isDisabled && !isLoading
-          ? Colors.grey.shade200
-          : const Color(0xFF0EA5E9);
+      if (isDisabled && !isLoading) {
+        return context.colors.onSurface.withOpacity(0.08);
+      }
+
+      if (gradient != null) {
+        return Colors.transparent;
+      }
+
+      return context.colors.primary;
     }
+
     return Colors.transparent;
   }
 
-  Border? _getBorder() {
+  Gradient? _getGradient() {
+    if (variant != ButtonVariant.primary) return null;
+    if (isDisabled && !isLoading) return null;
+    return gradient;
+  }
+
+  Border? _getBorder(BuildContext context) {
     if (variant == ButtonVariant.outlined) {
       return Border.all(
         color: isDisabled && !isLoading
-            ? Colors.grey.shade300
-            : const Color(0xFF0EA5E9),
+            ? context.colors.onSurface.withOpacity(0.12)
+            : context.colors.primary,
         width: 1.5,
       );
     }
+
     return null;
   }
 
   @override
   Widget build(BuildContext context) {
-    final contentColor = _getContentColor();
+    final contentColor = _getContentColor(context);
 
-    final Widget childContent = isLoading
-        ? SizedBox(
-            height: 24.0,
-            width: 24.0,
-            child: CircularProgressIndicator(
-              strokeWidth: 2.5,
+    final Widget childContent = AnimatedSwitcher(
+      duration: const Duration(milliseconds: 180),
+      child: isLoading
+          ? SizedBox(
+        key: const ValueKey('loading'),
+        height: AppDimens.iconMedium,
+        width: AppDimens.iconMedium,
+        child: CircularProgressIndicator(
+          strokeWidth: 2.5,
+          color: contentColor,
+        ),
+      )
+          : Row(
+        key: const ValueKey('content'),
+        mainAxisAlignment: MainAxisAlignment.center,
+        mainAxisSize: MainAxisSize.min,
+        children: [
+          if (iconPath != null) ...[
+            CustomImage(
+              imagePath: iconPath!,
+              width: AppDimens.iconMedium,
+              height: AppDimens.iconMedium,
               color: contentColor,
             ),
-          )
-        : Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            mainAxisSize: MainAxisSize.min,
-            children: [
-              if (iconPath != null) ...[
-                CustomImage(
-                  imagePath: iconPath!,
-                  width: 24.0,
-                  height: 24.0,
-                  color: contentColor,
-                ),
-                const SizedBox(width: 8.0),
-              ],
-              Text(
-                text,
-                style: TextStyle(
-                  color: contentColor,
-                  fontSize: 16.0,
-                  fontWeight: FontWeight.w600,
-                ),
+            SizedBox(width: AppDimens.grid1),
+          ],
+          Flexible(
+            child: Text(
+              text,
+              maxLines: 1,
+              overflow: TextOverflow.ellipsis,
+              style: AppTextStyles.textLargeSemi.copyWith(
+                color: contentColor,
               ),
-            ],
-          );
+            ),
+          ),
+        ],
+      ),
+    );
 
     final Widget buttonUI = AnimatedContainer(
       duration: enableAnimation
@@ -99,13 +133,23 @@ class CustomButton extends StatelessWidget {
           : Duration.zero,
       curve: Curves.easeInOut,
       width: width ?? double.infinity,
-      height: 48.0,
+      height: height ?? AppDimens.buttonHeight,
       alignment: Alignment.center,
-      padding: const EdgeInsets.symmetric(horizontal: 24.0),
+      padding: EdgeInsets.symmetric(horizontal: AppDimens.grid3),
       decoration: BoxDecoration(
-        color: _getBackgroundColor(),
-        border: _getBorder(),
-        borderRadius: BorderRadius.circular(999.0),
+        color: _getBackgroundColor(context),
+        gradient: _getGradient(),
+        border: _getBorder(context),
+        borderRadius: BorderRadius.circular(AppDimens.shapeFull),
+        boxShadow: gradient != null && !isDisabled
+            ? [
+          BoxShadow(
+            color: context.colors.primary.withOpacity(0.28),
+            blurRadius: 18,
+            offset: const Offset(0, 8),
+          ),
+        ]
+            : null,
       ),
       child: childContent,
     );
