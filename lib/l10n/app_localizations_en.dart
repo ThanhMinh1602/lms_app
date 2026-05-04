@@ -15,77 +15,98 @@ class AppLocalizationsEn extends AppLocalizations {
   String get appName => 'LMS EdTech';
 
   @override
-  String get splashSlogan => 'Học tập không giới hạn\nMọi lúc, mọi nơi';
+  String get splashSlogan => 'Unlimited Learning\nAnytime, Anywhere';
 
   @override
-  String get signInTitle => 'Đăng nhập';
+  String get signIn => 'Sign In';
 
   @override
-  String get signUpTitle => 'Đăng ký';
+  String get signUp => 'Sign up';
 
   @override
-  String get forgotPasswordPlainTitle => 'Quên mật khẩu?';
+  String get loginTitle => 'Welcome back! 👋';
 
   @override
-  String get forgotPasswordPlainSubtitle =>
-      'Nhập email của bạn để nhận hướng dẫn khôi phục mật khẩu.';
+  String get loginSubtitle =>
+      'Please sign in to continue your learning journey.';
 
   @override
-  String get resetPasswordSubtitle =>
-      'Tạo mật khẩu mới để tiếp tục sử dụng tài khoản của bạn.';
+  String get registerTitle => 'Create New Account 🚀';
 
   @override
-  String get nameLabel => 'Họ và tên';
+  String get registerSubtitle => 'Join our learning community and grow today.';
 
   @override
-  String get namePlaceholder => 'Tên của bạn';
+  String get forgotPasswordTitle => 'Forgot Password?';
 
   @override
-  String get emailLabel => 'Email';
+  String get forgotPasswordSubtitle =>
+      'Enter your email, we will send a recovery code shortly.';
 
   @override
-  String get emailPlaceholder => 'study@email.com';
+  String get loginButton => 'Log In';
 
   @override
-  String get passwordLabel => 'Mật khẩu';
+  String get registerButton => 'Sign Up';
 
   @override
-  String get passwordPlaceholder => 'Mật khẩu của bạn';
+  String get sendResetCodeButton => 'Send Recovery Code';
 
   @override
-  String get newPasswordLabel => 'Mật khẩu mới';
+  String get resetPassword => 'Reset Password';
 
   @override
-  String get confirmPasswordLabel => 'Xác nhận mật khẩu';
+  String get createPassword => 'Create Password';
 
   @override
-  String get phoneNumberLabel => 'Số điện thoại';
+  String get emailHint => 'Your email';
 
   @override
-  String get phoneNumberPlaceholder => '0334 xxxx xxxx';
+  String get passwordHint => 'Your password';
 
   @override
-  String get resetPasswordButton => 'Đặt lại mật khẩu';
+  String get nameHint => 'Your name';
 
   @override
-  String get createPasswordButton => 'Tạo mật khẩu';
+  String get fullNameHint => 'Full Name';
 
   @override
-  String get termsAgreePrefix => 'Tôi đồng ý với ';
+  String get confirmPasswordHint => 'Confirm Password';
 
   @override
-  String get termsAndConditions => 'điều khoản và điều kiện';
+  String get phoneNumberHint => '0334 xxxx xxxx';
 
   @override
-  String get termsAgreeSuffix =>
-      ' và chính sách bảo vệ dữ liệu cá nhân của ứng dụng';
+  String get enterEmailHint => 'lanlordjones@email.com';
 
   @override
-  String get googleLoginLabel => 'Đăng nhập với Google';
+  String get newPassword => 'New Password';
 
   @override
-  String get facebookLoginLabel => 'Đăng nhập với Facebook';
+  String get confirmPassword => 'Confirm Password';
 
   @override
-  String get appleLoginLabel => 'Đăng nhập với Apple';
+  String get forgotPassword => 'Forgot Password?';
+
+  @override
+  String get dontHaveAccount => 'Don’t have an account? ';
+
+  @override
+  String get alreadyHaveAccount => 'Already have an account? ';
+
+  @override
+  String get registerNow => 'Sign Up';
+
+  @override
+  String get loginNow => 'Sign In';
+
+  @override
+  String get backToLogin => 'Back to Login';
+
+  @override
+  String get or => 'OR';
+
+  @override
+  String get termsAndConditions =>
+      'I agree with the terms and conditions and also the protection of my personal data on this application';
 }

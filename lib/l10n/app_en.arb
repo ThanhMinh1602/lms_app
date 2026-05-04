@@ -1,7 +1,42 @@
 {
   "@@locale": "en",
   "appTitle": "Learning Management System",
-  "homeTitle": "Admin Dashboard",
-  "welcomeUser": "Welcome, {name}!",
-  "loginButton": "Login"
+  "appName": "LMS EdTech",
+  "splashSlogan": "Unlimited Learning\nAnytime, Anywhere",
+
+  "signIn": "Sign In",
+  "signUp": "Sign up",
+  "loginTitle": "Welcome back! 👋",
+  "loginSubtitle": "Please sign in to continue your learning journey.",
+  "registerTitle": "Create New Account 🚀",
+  "registerSubtitle": "Join our learning community and grow today.",
+  "forgotPasswordTitle": "Forgot Password?",
+  "forgotPasswordSubtitle": "Enter your email, we will send a recovery code shortly.",
+
+  "loginButton": "Log In",
+  "registerButton": "Sign Up",
+  "sendResetCodeButton": "Send Recovery Code",
+  "resetPassword": "Reset Password",
+  "createPassword": "Create Password",
+
+  "emailHint": "Your email",
+  "passwordHint": "Your password",
+  "nameHint": "Your name",
+  "fullNameHint": "Full Name",
+  "confirmPasswordHint": "Confirm Password",
+  "phoneNumberHint": "0334 xxxx xxxx",
+  "enterEmailHint": "lanlordjones@email.com",
+
+  "newPassword": "New Password",
+  "confirmPassword": "Confirm Password",
+
+  "forgotPassword": "Forgot Password?",
+  "dontHaveAccount": "Don’t have an account? ",
+  "alreadyHaveAccount": "Already have an account? ",
+  "registerNow": "Sign Up",
+  "loginNow": "Sign In",
+  "backToLogin": "Back to Login",
+
+  "or": "OR",
+  "termsAndConditions": "I agree with the terms and conditions and also the protection of my personal data on this application"
 }

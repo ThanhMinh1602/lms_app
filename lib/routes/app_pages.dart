@@ -3,6 +3,7 @@ import 'package:go_router/go_router.dart';
 import 'package:lms_app/features/auth/forgot_password/page/forgot_password_page.dart';
 import 'package:lms_app/features/auth/login/page/login_page.dart';
 import 'package:lms_app/features/auth/register/page/register_page.dart';
+import 'package:lms_app/features/auth/reset_password/page/reset_password_page.dart';
 import 'package:lms_app/features/main/main_page.dart';
 import 'package:lms_app/features/splash/page/splash_page.dart';
 import 'app_routes.dart';
@@ -37,6 +38,19 @@ class AppPages {
         path: AppRoutes.forgotPassword.path,
         name: AppRoutes.forgotPassword.name,
         builder: (context, state) => const ForgotPasswordPage(),
+      ),GoRoute(
+        path: AppRoutes.resetPassword.path,
+        name: AppRoutes.resetPassword.name,
+        pageBuilder: (context, state) => CustomTransitionPage(
+          key: state.pageKey,
+          child: const ResetPasswordPage(),
+          transitionsBuilder: (context, animation, secondaryAnimation, child) {
+            return FadeTransition(
+              opacity: animation,
+              child: child,
+            );
+          },
+        ),
       ),
       StatefulShellRoute.indexedStack(
         builder: (context, state, navigationShell) {

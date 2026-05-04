@@ -28,12 +28,17 @@ class $AssetsImagesGen {
 class $AssetsIconsGen {
   const $AssetsIconsGen();
 
+  final SvgGenImage icApple = const SvgGenImage('assets/icons/ic_apple.svg');
   final SvgGenImage icCalendar = const SvgGenImage(
     'assets/icons/ic_calendar.svg',
   );
   final SvgGenImage icDashboard = const SvgGenImage(
     'assets/icons/ic_dashboard.svg',
   );
+  final SvgGenImage icFacebook = const SvgGenImage(
+    'assets/icons/ic_facebook.svg',
+  );
+  final SvgGenImage icGoogle = const SvgGenImage('assets/icons/ic_google.svg');
   final SvgGenImage icMessage = const SvgGenImage(
     'assets/icons/ic_message.svg',
   );

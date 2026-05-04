@@ -3,6 +3,9 @@ enum AppRoutes {
   login(path: '/login', name: 'login'),
   register(path: '/register', name: 'register'),
   forgotPassword(path: '/forgot-password', name: 'forgot_password'),
+  // THÊM DÒNG NÀY
+  resetPassword(path: '/reset-password', name: 'reset_password'),
+
   home(path: '/home', name: 'home'),
   schedule(path: '/schedule', name: 'schedule'),
   chat(path: '/chat', name: 'chat'),

@@ -41,7 +41,8 @@ class BaseView extends StatelessWidget {
     this.hideKeyboardOnTap = true,
     this.extendBody = false,
     this.extendBodyBehindAppBar = false,
-    this.resizeToAvoidBottomInset,
+    this.resizeToAvoidBottomInset = true
+    ,
     this.padding,
     this.bottomNavigationBar,
     this.floatingActionButton,

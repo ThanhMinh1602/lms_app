@@ -21,11 +21,20 @@ class $LibGen {
 class $AssetsIconsGen {
   const $AssetsIconsGen();
 
+  /// File path: assets/icons/ic_apple.svg
+  String get icApple => 'assets/icons/ic_apple.svg';
+
   /// File path: assets/icons/ic_calendar.svg
   String get icCalendar => 'assets/icons/ic_calendar.svg';
 
   /// File path: assets/icons/ic_dashboard.svg
   String get icDashboard => 'assets/icons/ic_dashboard.svg';
+
+  /// File path: assets/icons/ic_facebook.svg
+  String get icFacebook => 'assets/icons/ic_facebook.svg';
+
+  /// File path: assets/icons/ic_google.svg
+  String get icGoogle => 'assets/icons/ic_google.svg';
 
   /// File path: assets/icons/ic_message.svg
   String get icMessage => 'assets/icons/ic_message.svg';
@@ -34,7 +43,15 @@ class $AssetsIconsGen {
   String get icProfile => 'assets/icons/ic_profile.svg';
 
   /// List of all assets
-  List<String> get values => [icCalendar, icDashboard, icMessage, icProfile];
+  List<String> get values => [
+    icApple,
+    icCalendar,
+    icDashboard,
+    icFacebook,
+    icGoogle,
+    icMessage,
+    icProfile,
+  ];
 }
 
 class $AssetsImagesGen {

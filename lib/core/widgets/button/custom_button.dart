@@ -140,7 +140,7 @@ class CustomButton extends StatelessWidget {
         color: _getBackgroundColor(context),
         gradient: _getGradient(),
         border: _getBorder(context),
-        borderRadius: BorderRadius.circular(AppDimens.shapeFull),
+        borderRadius: BorderRadius.circular(AppDimens.shapeMedium),
         boxShadow: gradient != null && !isDisabled
             ? [
           BoxShadow(

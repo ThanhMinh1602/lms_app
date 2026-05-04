@@ -18,74 +18,96 @@ class AppLocalizationsVi extends AppLocalizations {
   String get splashSlogan => 'Học tập không giới hạn\nMọi lúc, mọi nơi';
 
   @override
-  String get signInTitle => 'Đăng nhập';
+  String get signIn => 'Đăng nhập';
 
   @override
-  String get signUpTitle => 'Đăng ký';
+  String get signUp => 'Đăng ký';
 
   @override
-  String get forgotPasswordPlainTitle => 'Quên mật khẩu?';
+  String get loginTitle => 'Chào mừng trở lại! 👋';
 
   @override
-  String get forgotPasswordPlainSubtitle =>
-      'Nhập email của bạn để nhận hướng dẫn khôi phục mật khẩu.';
+  String get loginSubtitle =>
+      'Vui lòng đăng nhập để tiếp tục hành trình học tập của bạn.';
 
   @override
-  String get resetPasswordSubtitle =>
-      'Tạo mật khẩu mới để tiếp tục sử dụng tài khoản của bạn.';
+  String get registerTitle => 'Tạo tài khoản mới 🚀';
 
   @override
-  String get nameLabel => 'Họ và tên';
+  String get registerSubtitle =>
+      'Tham gia cộng đồng học tập và phát triển bản thân ngay hôm nay.';
 
   @override
-  String get namePlaceholder => 'Tên của bạn';
+  String get forgotPasswordTitle => 'Quên mật khẩu?';
 
   @override
-  String get emailLabel => 'Email';
+  String get forgotPasswordSubtitle =>
+      'Nhập email của bạn, chúng tôi sẽ gửi mã khôi phục trong giây lát.';
 
   @override
-  String get emailPlaceholder => 'study@email.com';
+  String get loginButton => 'Đăng nhập';
 
   @override
-  String get passwordLabel => 'Mật khẩu';
+  String get registerButton => 'Đăng ký';
 
   @override
-  String get passwordPlaceholder => 'Mật khẩu của bạn';
+  String get sendResetCodeButton => 'Gửi mã khôi phục';
 
   @override
-  String get newPasswordLabel => 'Mật khẩu mới';
+  String get resetPassword => 'Đặt lại mật khẩu';
 
   @override
-  String get confirmPasswordLabel => 'Xác nhận mật khẩu';
+  String get createPassword => 'Tạo mật khẩu';
 
   @override
-  String get phoneNumberLabel => 'Số điện thoại';
+  String get emailHint => 'Email của bạn';
 
   @override
-  String get phoneNumberPlaceholder => '0334 xxxx xxxx';
+  String get passwordHint => 'Mật khẩu của bạn';
 
   @override
-  String get resetPasswordButton => 'Đặt lại mật khẩu';
+  String get nameHint => 'Tên của bạn';
 
   @override
-  String get createPasswordButton => 'Tạo mật khẩu';
+  String get fullNameHint => 'Họ và tên';
 
   @override
-  String get termsAgreePrefix => 'Tôi đồng ý với ';
+  String get confirmPasswordHint => 'Xác nhận mật khẩu';
 
   @override
-  String get termsAndConditions => 'điều khoản và điều kiện';
+  String get phoneNumberHint => '0334 xxxx xxxx';
 
   @override
-  String get termsAgreeSuffix =>
-      ' và chính sách bảo vệ dữ liệu cá nhân của ứng dụng';
+  String get enterEmailHint => 'lanlordjones@email.com';
 
   @override
-  String get googleLoginLabel => 'Đăng nhập với Google';
+  String get newPassword => 'Mật khẩu mới';
 
   @override
-  String get facebookLoginLabel => 'Đăng nhập với Facebook';
+  String get confirmPassword => 'Xác nhận mật khẩu';
 
   @override
-  String get appleLoginLabel => 'Đăng nhập với Apple';
+  String get forgotPassword => 'Quên mật khẩu?';
+
+  @override
+  String get dontHaveAccount => 'Chưa có tài khoản? ';
+
+  @override
+  String get alreadyHaveAccount => 'Đã có tài khoản? ';
+
+  @override
+  String get registerNow => 'Đăng ký';
+
+  @override
+  String get loginNow => 'Đăng nhập';
+
+  @override
+  String get backToLogin => 'Quay lại Đăng nhập';
+
+  @override
+  String get or => 'HOẶC';
+
+  @override
+  String get termsAndConditions =>
+      'Tôi đồng ý với các điều khoản và điều kiện cũng như chính sách bảo vệ dữ liệu cá nhân của ứng dụng này';
 }
